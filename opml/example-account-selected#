@@ -1,0 +1,10 @@
+<opml version="1.1">
+	<body>
+		<outline text="YouTube Subscriptions" title="YouTube Subscriptions">
+			<outline text="MobileTechReview" title="MobileTechReview" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?user=mobiletechreview" />
+			<outline text="Traversy Media" title="Traversy Media" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UC29ju8bIPH5as8OGnQzwJyA" />
+			<outline text="GreatScott!" title="GreatScott!" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?user=greatscottlab" />
+			<outline text="Primitive Technology" title="Primitive Technology" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCAL3JXZSzSm8AlZyD3nQdBA" />
+		</outline>
+	</body>
+</opml>

@@ -1,0 +1,4 @@
+.vscode
+*.sum
+/out/index.html
+youtubeFeeds

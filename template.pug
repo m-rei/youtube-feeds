@@ -1,0 +1,122 @@
+doctype
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        title
+        link(rel="icon" type="image/png" href="https://youtube.com/favicon.ico")
+        script.
+            function openAccount(evt, accName) {
+                var i, tabcontent, tablinks;
+
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+
+                tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+
+                document.getElementById(accName).style.display = "block";
+                evt.currentTarget.className += " active";
+            } 
+        style(type="text/css").
+            .tab {
+                overflow: hidden;
+                border: 1px solid #ccc;
+                background-color: #f1f1f1;
+                top: 0;
+                position: sticky;
+                z-index: 1;
+            }
+            .tab button {
+                background-color: inherit;
+                float: left;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                padding: 14px 16px;
+                transition: 0.3s;
+                text-decoration: none;
+                font-size: 1.25em;
+                font-variant: small-caps;
+            }
+            .tab button:hover {
+                background-color: #ddd;
+            }
+            .tab button:focus,
+            .tab button::-moz-focus-inner {
+                border: none;
+            }
+            .tab button.active {
+                background-color: #ccc;
+            }
+            .tabcontent {
+                padding-top: 5px;
+            }
+            .invis {
+                display: none;
+            }
+            .vis {
+                display: block;
+            }
+            .blurred {
+                filter: blur(15px);
+                transition: 0.25s filter;
+            }
+            .blurred:hover {
+                filter: none;
+            }
+            
+            body {
+                background-color: #222;
+            }
+            .container {
+                display: flex;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+            }
+            .card {
+                display: flex;
+                color: #bbb;
+                margin: 5px;
+                padding: 2px;
+                flex-direction: column;
+                align-items: center;
+                box-shadow: 0 0 1px 1px black;
+                width: 300px;
+                cursor: pointer;
+                transition: box-shadow 0.25s ease-in-out;
+            }
+            .card:hover {
+                box-shadow: 0 0 10px 1px white;
+            }
+            .card > div {
+                position: relative;
+            }
+            .card > div > img {
+                position: relative;
+                width: 240px;
+            }
+            .card > div > span {
+                position: absolute;
+                color: white;
+                right: 5px;
+                bottom: 2px;
+            }
+    body
+        div(class="tab")
+            each acc, accStr in accounts
+                button(class= acc.Selected ? "tablinks active" : "tablinks" onclick!="openAccount(event, '" + accStr + "')")= accStr
+        each acc, accStr in accounts
+            div(class= acc.Selected ? "tabcontent vis" : "tabcontent invis" id=accStr)
+                div(class="container")
+                    each video in acc.Videos
+                        div(class="card" title=video.Title onclick!="window.open('https://youtu.be/" + video.VideoID + "');")
+                            p!= "<b>" + video.Channel + "</b>"
+                            div
+                                img(src!="https://img.youtube.com/vi/" + video.VideoID +  "/sddefault.jpg" class= acc.Blurred ? "blurred" : "")
+                                span= video.DurationStr
+                            p= video.Title
+                            p= video.TimestampStr
