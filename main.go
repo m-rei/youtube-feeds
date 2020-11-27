@@ -95,6 +95,8 @@ func readAccountChannels(exeDir, account string) (accountChannels, error) {
 		Body    Body     `xml:"body"`
 	}
 
+	xmlData = []byte(strings.ToValidUTF8(string(xmlData), ""))
+
 	var opml Opml
 	xml.Unmarshal(xmlData, &opml)
 
@@ -237,7 +239,7 @@ func renderAndVisit(exeDir string, youtubeAccountsMap map[string]*youtubeAccount
 		fmt.Println(err)
 		return
 	}
-	os.MkdirAll(exeDir + "/out/", os.ModePerm)
+	os.MkdirAll(exeDir+"/out/", os.ModePerm)
 	if err := ioutil.WriteFile(exeDir+"/out/index.html", buf.Bytes(), 0644); err != nil {
 		fmt.Println("Error: outputting index")
 		fmt.Println(err)
