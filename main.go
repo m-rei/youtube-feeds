@@ -98,7 +98,9 @@ func readAccountChannels(exeDir, account string) (accountChannels, error) {
 	xmlData = []byte(strings.ToValidUTF8(string(xmlData), ""))
 
 	var opml Opml
-	xml.Unmarshal(xmlData, &opml)
+	decoder := xml.NewDecoder(strings.NewReader(string(xmlData)))
+	decoder.Strict = false
+	err = decoder.Decode(&opml)
 
 	var ret accountChannels
 	ret.account = strings.Title(strings.TrimSuffix(strings.TrimSuffix(account, "#"), "!"))
