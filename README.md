@@ -10,14 +10,15 @@
 
 ## What
 
-you have multiple youtube accounts (or brand-/sub accounts) and want to be able to view all your feeds at once without having to arduously & slowly switch accounts?
+you have multiple youtube accounts (or brand-/sub accounts) and want to be able to view all your feeds at once without having to arduously & slowly switch between accounts?
 well then, this is just the right tool for you.
 
-youtubeFeeds is a simple feeds tiled-view generator which uses the OPML files (RSS) youtube allows one to export via this URL:
+youtubeFeeds is a basic tile renderer for... youtube feeds :)
+it uses OPML files (RSS) which can be exported from youtube via this link:
 
 > https://www.youtube.com/subscription_manager?action_takeout=1
 
-all you need to do is export the OPML files once for every account you have, put them into the opml subfolder and youtubeFeeds will use them to render a tiled & grouped view for you.
+just place all the OPML files (one for each account) into the opml subfolder and youtubeFeeds will use them to render a tiled & grouped view for you.
 
 **Edit** Youtube has recently removed the export functionality. I have restored it with a [custom script](https://github.com/m-rei/youtube-opml-exporter-script), check it out!
 
